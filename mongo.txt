@@ -1,0 +1,33 @@
+[root@server nodeTut]# mongo
+MongoDB shell version v3.4.15
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.15
+Server has startup warnings: 
+2018-05-27T13:10:36.956+0530 I CONTROL  [initandlisten] 
+2018-05-27T13:10:36.956+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-05-27T13:10:36.956+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-05-27T13:10:36.956+0530 I CONTROL  [initandlisten] 
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] 
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] 
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2018-05-27T13:10:36.957+0530 I CONTROL  [initandlisten] 
+> show dbs
+admin  0.000GB
+local  0.000GB
+> use nodekb
+switched to db nodekb
+> db.createCollection('articles');
+{ "ok" : 1 }
+> show collections
+articles
+> db.articles.insert({title:"Article One", author: "Vinay Rai", body: "This is article one"});
+WriteResult({ "nInserted" : 1 })
+> db.articles.fine();
+2018-05-27T14:52:30.847+0530 E QUERY    [thread1] TypeError: db.articles.fine is not a function :
+@(shell):1:1
+> db.articles.find();
+{ "_id" : ObjectId("5b0a78bc694874b3da3cd456"), "title" : "Article One", "author" : "Vinay Rai", "body" : "This is article one" }
+> db.articles.find().pretty();
